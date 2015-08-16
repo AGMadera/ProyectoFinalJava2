@@ -374,7 +374,7 @@ int l[]=new int[4];
             public void run() {
                 new Memorama().setVisible(true);
             }
-        });
+        });////""""
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
