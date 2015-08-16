@@ -8,6 +8,8 @@ package proyectofinaljava2;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.util.ArrayList;
+import java.util.Random;
+import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 
 /**
@@ -16,8 +18,13 @@ import javax.swing.JLabel;
  */
 public class Memorama extends javax.swing.JFrame {
 ArrayList<JLabel> etiquetas;
-int piezas[]=new int[9];
-JLabel imagenes[]=new JLabel[9];
+int piezas[]=new int[12];
+JLabel imagenes[]=new JLabel[12];
+int valor=0;
+int carta[]=new int[12];
+Random alea=new Random();
+int z=0;
+int l[]=new int[4];
 
 
     public Memorama() {
@@ -27,24 +34,227 @@ JLabel imagenes[]=new JLabel[9];
         //Vamos a agregar los label's 
         
         
-        int valor=0;
-        int largo =(9/3)*68;
-        int ancho=(9/3)*68;
+        //int valor=0;
+        int largo =350;
+        int ancho=350;
         jPanel1.setSize(largo,ancho);
         
         
+        
+        for(int x=0; x<12; x++){
+        int arreglo=(int)(alea.nextDouble()*6+1);
+         if(x==0){
+            carta[x]=arreglo;
+         }
+          if(x!=0){
+            int a=0;
+        
+           for(;a!=1;){
+            int variable=0;
+                for(int j=0; j<carta.length; j++){
+                    if(arreglo==carta[j]){
+                        variable++;
+                    }
+                }
+                if((variable==0)||(variable==1)){
+                    carta[x]=arreglo;
+                    a=1;
+                }else{
+                    arreglo=(int)(alea.nextDouble()*6+1);
+                }
+            }
+          }
+        }
+        for(int i:piezas){
+            imagenes[valor]=new JLabel();
+            ImageIcon iconx=new ImageIcon("src/proyectofinal/a.png");
+            imagenes[valor].setIcon(iconx);
+            imagenes[valor].setName(" "+valor);
+            imagenes[valor].setSize(500, 500);
+            final Integer inte=new Integer(imagenes[valor].getName());
+            
+            jPanel1.add(imagenes[valor]);
+        
+        
+        
+        
+        
+        /*
         for(int i:piezas){
         //JLabel label =new JLabel("Pieza "+valor);
         // jPanel1.add(label);
          imagenes[valor]=new JLabel("Pieza "+ valor);
          imagenes [valor].setName("pieza "+ valor);
         jPanel1.add(imagenes[valor]);
-        
+        */
+
         imagenes[valor].addMouseListener(new MouseListener(){
 
              @Override
              public void mouseClicked(MouseEvent e) {
-                 jLabel1.setText(e.getComponent().getName());
+                 //jLabel1.setText(e.getComponent().getName());
+                 
+                 ///Agrego imagenes 
+                 ImageIcon icon0=new ImageIcon("src/proyectofinal/a.png");
+                 ImageIcon icon1=new ImageIcon("src/proyectofinal/b.png");
+                 ImageIcon icon2=new ImageIcon("src/proyectofinal/c.png");
+                 ImageIcon icon3=new ImageIcon("src/proyectofinal/d.png");
+                 ImageIcon icon4=new ImageIcon("src/proyectofinal/e.png");
+                 ImageIcon icon5=new ImageIcon("src/proyectofinal/f.png");
+                 ImageIcon icon6=new ImageIcon("src/proyectofinal/g.png");
+                 
+                 if(carta[inte]==1){
+                     imagenes[inte].setIcon(icon1);
+                     imagenes[inte].setText(null);
+                     z++;
+                     if(z==1){
+                         l[0]=carta[inte];
+                         Integer ls=new Integer(imagenes[inte].getName());
+                         l[1]=ls;
+                     }
+                     if(z==2){
+                         l[2]=carta[inte];
+                         Integer lt=new Integer(imagenes[inte].getName());
+                         l[3]=lt;
+                     }
+                     if(z==3){
+                         if(l[0]!=l[2]){
+                             imagenes[l[1]].setIcon(icon0);
+                             imagenes[l[3]].setIcon(icon0);
+                         }
+                         z=1;
+                         l[0]=carta[inte];
+                         Integer lu=new Integer(imagenes[inte].getName());
+                         l[1]=lu;
+                     }
+                 }
+                 if(carta[inte]==2){
+                     imagenes[inte].setIcon(icon2);
+                     imagenes[inte].setText(null);
+                     z++;
+                     if(z==1){
+                         l[0]=carta[inte];
+                         Integer ls=new Integer(imagenes[inte].getName());
+                         l[1]=ls;
+                     }
+                     if(z==2){
+                         l[2]=carta[inte];
+                         Integer lt=new Integer(imagenes[inte].getName());
+                         l[3]=lt;
+                     }
+                     if(z==3){
+                         if(l[0]!=l[2]){
+                             imagenes[l[1]].setIcon(icon0);
+                             imagenes[l[3]].setIcon(icon0);
+                         }
+                         z=1;
+                         l[0]=carta[inte];
+                         Integer pares=new Integer(imagenes[inte].getName());
+                         l[1]=pares;
+                     }
+                 }
+                 if(carta[inte]==3){
+                     imagenes[inte].setIcon(icon3);
+                     imagenes[inte].setText(null);
+                     z++;
+                     if(z==1){
+                         l[0]=carta[inte];
+                         Integer ls=new Integer(imagenes[inte].getName());
+                         l[1]=ls;
+                     }
+                     if(z==2){
+                         l[2]=carta[inte];
+                         Integer lt=new Integer(imagenes[inte].getName());
+                         l[3]=lt;
+                     }
+                     if(z==3){
+                         if(l[0]!=l[2]){
+                             imagenes[l[1]].setIcon(icon0);
+                             imagenes[l[3]].setIcon(icon0);
+                         }
+                         z=1;
+                         l[0]=carta[inte];
+                         Integer lu=new Integer(imagenes[inte].getName());
+                         l[1]=lu;
+                     }
+                 }
+                 if(carta[inte]==4){
+                     imagenes[inte].setIcon(icon4);
+
+                     imagenes[inte].setText(null);
+                     z++;
+                     if(z==1){
+                         l[0]=carta[inte];
+                         Integer ls=new Integer(imagenes[inte].getName());
+                         l[1]=ls;
+                     }
+                     if(z==2){
+                         l[2]=carta[inte];
+                         Integer lt=new Integer(imagenes[inte].getName());
+                         l[3]=lt;
+                     }
+                     if(z==3){
+                         if(l[0]!=l[2]){
+                             imagenes[l[1]].setIcon(icon0);
+                             imagenes[l[3]].setIcon(icon0);
+                         }
+                         z=1;
+                         l[0]=carta[inte];
+                         Integer lu=new Integer(imagenes[inte].getName());
+                         l[1]=lu;
+                     }
+                 }
+                 if(carta[inte]==5){
+                     imagenes[inte].setIcon(icon5);
+                     imagenes[inte].setText(null);
+                     z++;
+                     if(z==1){
+                         l[0]=carta[inte];
+                         Integer ls=new Integer(imagenes[inte].getName());
+                         l[1]=ls;
+                     }
+                     if(z==2){
+                         l[2]=carta[inte];
+                         Integer paresy=new Integer(imagenes[inte].getName());
+                         l[3]=paresy;
+                     }
+                     if(z==3){
+                         if(l[0]!=l[2]){
+                             imagenes[l[1]].setIcon(icon0);
+                             imagenes[l[3]].setIcon(icon0);
+                         }
+                         z=1;
+                         l[0]=carta[inte];
+                         Integer lu=new Integer(imagenes[inte].getName());
+                         l[1]=lu;
+                     } 
+                 }
+                 if(carta[inte]==6){
+                     imagenes[inte].setIcon(icon6);
+                     imagenes[inte].setText(null);
+                     z++;
+                     if(z==1){
+                         l[0]=carta[inte];
+                         Integer ls=new Integer(imagenes[inte].getName());
+                         l[1]=ls;
+                     }
+                     if(z==2){
+                         l[2]=carta[inte];
+                         Integer lt=new Integer(imagenes[inte].getName());
+                         l[3]=lt;
+                     }
+                     if(z==3){
+                         if(l[0]!=l[2]){
+                             imagenes[l[1]].setIcon(icon0);
+                             imagenes[l[3]].setIcon(icon0);
+                         }
+                         z=1;
+                         l[0]=carta[inte];
+                         Integer lu=new Integer(imagenes[inte].getName());
+                         l[1]=lu;
+                     }
+                 }
+                 jLabel1.setText(" "+inte);
              }
 
              @Override
@@ -85,7 +295,7 @@ JLabel imagenes[]=new JLabel[9];
 
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -96,7 +306,7 @@ JLabel imagenes[]=new JLabel[9];
 
         jLabel1.setText("jLabel1");
 
-        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/proyectofinaljava2/yoshi_s_egg.png"))); // NOI18N
+        jLabel2.setText("jLabel2");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -105,13 +315,15 @@ JLabel imagenes[]=new JLabel[9];
             .addGroup(layout.createSequentialGroup()
                 .addGap(28, 28, 28)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 590, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(35, 35, 35)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 11, Short.MAX_VALUE)))
-                .addContainerGap())
+                        .addGap(35, 35, 35)
+                        .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 136, Short.MAX_VALUE)
+                        .addContainerGap())
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(43, 43, 43)
+                        .addComponent(jLabel2)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -122,8 +334,8 @@ JLabel imagenes[]=new JLabel[9];
             .addGroup(layout.createSequentialGroup()
                 .addGap(47, 47, 47)
                 .addComponent(jLabel1)
-                .addGap(71, 71, 71)
-                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(141, 141, 141)
+                .addComponent(jLabel2)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -167,7 +379,7 @@ JLabel imagenes[]=new JLabel[9];
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
     // End of variables declaration//GEN-END:variables
 }
